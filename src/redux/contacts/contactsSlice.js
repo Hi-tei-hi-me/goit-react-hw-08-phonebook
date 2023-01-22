@@ -1,54 +1,43 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from 'redux/contacts/operations';
 
 const contactsInitialState = { contacts: [], isLoading: false, error: '' };
 
-const handlePending = state => ({
-  ...state,
-  isLoading: true,
-});
+const extraActions = [fetchContacts, addContact, deleteContact];
 
-const handleRejected = (state, action) => ({
-  ...state,
-  isLoading: false,
-  error: action.payload,
-});
+const getActions = type => extraActions.map(action => action[type]);
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleFulfilled = state => {
+  state.isLoading = false;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        return {
-          ...state,
-          isLoading: false,
-          error: null,
-          contacts: action.payload,
-        };
+        state.contacts = action.payload;
       })
-      .addCase(fetchContacts.rejected, handleRejected)
-      .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
-        return {
-          ...state,
-          isLoading: false,
-          error: null,
-          contacts: [...state.contacts, action.payload],
-        };
+        state.contacts = [action.payload, ...state.contacts];
       })
-      .addCase(addContact.rejected, handleRejected)
-      .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
-        return {
-          ...state,
-          isLoading: false,
-          error: null,
-          contacts: state.contacts.filter(({ id }) => id !== action.payload.id),
-        };
+        state.contacts = state.contacts.filter(({ id }) => id !== action.payload.id);
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addMatcher(isAnyOf(...getActions('pending')), handlePending)
+      .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
+      .addMatcher(isAnyOf(...getActions('rejected')), handleRejected);
   },
 });
 

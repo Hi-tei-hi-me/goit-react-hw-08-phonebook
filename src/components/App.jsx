@@ -1,25 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
-import { NothingAdded, NotFound, Error } from './Notifications/Notifications.styled';
 import { Box } from './Box/Box.styled';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './Contacts/ListOfContacts';
 import { Filter } from './SearchForm/SearchForm';
-import { getContacts, setIsLoading, setError } from 'redux/contacts/selectors';
-import { fetchContacts } from 'redux/operations';
-import { getFilteredList } from 'redux/selectors';
 import { Loader } from './Loader/Loader';
+import { NothingAdded, NotFound, Error } from './Notifications/Notifications.styled';
+import { getContacts, setIsLoading, setError } from 'redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { getFilteredList } from 'redux/selectors';
 
 export const App = () => {
-  const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(setIsLoading);
+  const error = useSelector(setError);
   const filteredList = useSelector(getFilteredList);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-  const isLoading = useSelector(setIsLoading);
-  const error = useSelector(setError);
+
   return (
     <Box>
       <Toaster />

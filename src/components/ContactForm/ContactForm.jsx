@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { MdPersonAddDisabled, MdPersonAdd } from 'react-icons/md';
 import { BsPatchExclamation } from 'react-icons/bs';
 import { FormContainer, Label, Input, AddBtn } from './ContactForm.styled';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {

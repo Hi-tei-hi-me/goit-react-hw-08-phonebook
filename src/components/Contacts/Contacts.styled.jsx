@@ -19,4 +19,17 @@ export const Item = styled.li`
   color: #fff;
 `;
 
-export const DeleteBtn = styled.button``;
+export const ContactInfo = styled.p`
+  @media (max-width: 470px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const DeleteBtn = styled.button`
+  flex-shrink: 0;
+  @media (max-width: 424px) {
+    width: 75px;
+    padding: 5px 8px;
+  }
+`;

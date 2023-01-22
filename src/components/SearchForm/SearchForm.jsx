@@ -5,10 +5,13 @@ import { selectFilter } from 'redux/searchForm/selectors';
 import { getContacts } from 'redux/contacts/selectors';
 
 export const Filter = () => {
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
   const contacts = useSelector(getContacts);
+  const filter = useSelector(selectFilter);
+
+  const dispatch = useDispatch();
+
   const handleChange = evt => dispatch(setFilter(evt.target.value));
+
   return (
     <SearchForm>
       <Label htmlFor="filter">Find contact by name:</Label>
