@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
-import { MdPersonRemove } from 'react-icons/md';
+import { MdPersonRemove, MdDeleteForever } from 'react-icons/md';
 import { BsPatchExclamation } from 'react-icons/bs';
 import { Item, ContactInfo, DeleteBtn } from './Contacts.styled';
 import { deleteContact } from 'redux/contacts/operations';
@@ -30,11 +30,11 @@ export const Contact = ({ id, name, number }) => {
   return (
     <Item>
       <ContactInfo>
-        <span>{name}: </span>
+        <span>{name}:</span>
         <span>{number}</span>
       </ContactInfo>
       <DeleteBtn type="button" onClick={handleDelete} disabled={DeleteInProgress}>
-        Delete contact
+        <MdDeleteForever size={22} color="#976363" />
       </DeleteBtn>
     </Item>
   );

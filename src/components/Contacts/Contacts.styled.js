@@ -17,19 +17,26 @@ export const Item = styled.li`
   align-items: center;
   gap: 5px;
   color: #fff;
+  text-decoration: inherit;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:has(button:hover, button:focus) p {
+    text-decoration: underline;
+  }
 `;
 
 export const ContactInfo = styled.p`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   @media (max-width: 470px) {
-    display: flex;
     flex-direction: column;
+    gap: 1px;
   }
 `;
 
 export const DeleteBtn = styled.button`
   flex-shrink: 0;
-  @media (max-width: 424px) {
-    width: 75px;
-    padding: 5px 8px;
+  @media (max-width: 470px) {
+    padding: 10px;
   }
 `;

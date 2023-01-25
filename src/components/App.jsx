@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
+import { MdBook, MdSearchOff, MdOutlineErrorOutline } from 'react-icons/md';
 import { Box } from './Box/Box.styled';
-import { ContactForm } from './ContactForm/ContactForm';
+import { ContactForm } from './ContactAddForm/ContactAddForm';
 import { ContactList } from './Contacts/ListOfContacts';
-import { Filter } from './SearchForm/SearchForm';
+import { Filter } from './ContactsFilter/ContactsFilter';
 import { Loader } from './Loader/Loader';
 import { NothingAdded, NotFound, Error } from './Notifications/Notifications.styled';
 import { getContacts, setIsLoading, setError } from 'redux/contacts/selectors';
@@ -31,14 +32,25 @@ export const App = () => {
       <h2>Contacts</h2>
       {isLoading && !error && <Loader />}
       {!isLoading && !error && contacts.length === 0 && (
-        <NothingAdded>This Book is empty. Yet.</NothingAdded>
+        <NothingAdded>
+          <MdBook size={25} />
+          This Book is empty. Yet.
+        </NothingAdded>
       )}
       {contacts.length > 0 && <Filter />}
       {filteredList.length > 0 && <ContactList />}
       {contacts.length > 0 && filteredList.length === 0 && (
-        <NotFound>Sorry, no one's here!</NotFound>
+        <NotFound>
+          <MdSearchOff size={25} />
+          Sorry, no one's here!
+        </NotFound>
       )}
-      {error && <Error>Oops! Something went wrong</Error>}
+      {error && (
+        <Error>
+          <MdOutlineErrorOutline size={25} color="#b24a4a" />
+          Oops! Something went wrong...
+        </Error>
+      )}
     </Box>
   );
 };

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { SearchForm, Label, Input } from './SearchForm.styled';
+import { MdPersonSearch } from 'react-icons/md';
+import { SearchForm, Label, Input } from './ContactsFilter.styled';
 import { setFilter } from 'redux/searchForm/filterSlice';
 import { selectFilter } from 'redux/searchForm/selectors';
 import { getContacts } from 'redux/contacts/selectors';
@@ -14,7 +15,10 @@ export const Filter = () => {
 
   return (
     <SearchForm>
-      <Label htmlFor="filter">Find contact by name:</Label>
+      <Label htmlFor="filter">
+        <MdPersonSearch size={25} color="#4e4e4e" />
+        Find by name:
+      </Label>
       <Input
         autoFocus
         disabled={!filter && contacts.length < 3}

@@ -1,9 +1,23 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
-import { MdPersonAddDisabled, MdPersonAdd } from 'react-icons/md';
+import {
+  MdPersonAddDisabled,
+  MdPersonAdd,
+  MdPerson,
+  MdPhone,
+  MdAddToHomeScreen,
+} from 'react-icons/md';
 import { BsPatchExclamation } from 'react-icons/bs';
-import { FormContainer, Label, Input, AddBtn } from './ContactForm.styled';
+import {
+  FormContainer,
+  FormTable,
+  FormLabels,
+  Label,
+  FormInputs,
+  Input,
+  AddBtn,
+} from './ContactAddForm.styled';
 import { addContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
 
@@ -35,7 +49,7 @@ export const ContactForm = () => {
           })
         )
         .catch(error => toast(`Oops!`, error.message), {
-          icon: <BsPatchExclamation size={40} color="#5d3d79" />,
+          icon: <BsPatchExclamation size={30} color="#5d3d79" />,
         });
       resetForm();
     }
@@ -47,42 +61,40 @@ export const ContactForm = () => {
   };
   return (
     <FormContainer autoComplete="off" onSubmit={handleSubmit}>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <Label htmlFor="name">Name:</Label>
-            </td>
-            <td>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                value={name}
-                onChange={handleChange}
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Label htmlFor="number">Phone №:</Label>
-            </td>
-            <td>
-              <Input
-                type="tel"
-                name="number"
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                value={number}
-                onChange={handleChange}
-                required
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <AddBtn type="submit">Add contact</AddBtn>
+      <FormTable>
+        <FormLabels>
+          <Label htmlFor="name">
+            <MdPerson size={28} color="#4e4e4e" />
+          </Label>
+          <Label htmlFor="number">
+            <MdPhone size={28} color="#4e4e4e" />
+          </Label>
+        </FormLabels>
+        <FormInputs>
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            type="tel"
+            name="number"
+            placeholder="Phone №"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            value={number}
+            onChange={handleChange}
+            required
+          />
+        </FormInputs>
+      </FormTable>
+      <AddBtn type="submit">
+        Add contact <MdAddToHomeScreen size={20} color="rgb(77, 104, 104)" />
+      </AddBtn>
     </FormContainer>
   );
 };
