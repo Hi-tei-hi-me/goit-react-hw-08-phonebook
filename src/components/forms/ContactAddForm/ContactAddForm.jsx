@@ -19,10 +19,10 @@ import {
   AddBtn,
 } from './ContactAddForm.styled';
 import { addContact } from 'redux/contacts/operations';
-import { getContacts } from 'redux/contacts/selectors';
+import { selectAllContacts } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectAllContacts);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -75,7 +75,7 @@ export const ContactForm = () => {
             type="text"
             id="name"
             name="name"
-            placeholder="Name"
+            placeholder="name"
             value={name}
             onChange={handleChange}
             required
@@ -83,7 +83,7 @@ export const ContactForm = () => {
           <Input
             type="tel"
             name="number"
-            placeholder="Phone №"
+            placeholder="phone №"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             value={number}

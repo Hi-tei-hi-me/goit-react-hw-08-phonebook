@@ -3,14 +3,12 @@ import { MdPersonSearch } from 'react-icons/md';
 import { SearchForm, Label, Input } from './ContactsFilter.styled';
 import { setFilter } from 'redux/searchForm/filterSlice';
 import { selectFilter } from 'redux/searchForm/selectors';
-import { getContacts } from 'redux/contacts/selectors';
+import { selectAllContacts } from 'redux/contacts/selectors';
 
 export const Filter = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectAllContacts);
   const filter = useSelector(selectFilter);
-
   const dispatch = useDispatch();
-
   const handleChange = evt => dispatch(setFilter(evt.target.value));
 
   return (

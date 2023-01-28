@@ -21,6 +21,7 @@ export const FormLabels = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   justify-content: space-around;
+  gap: 5px;
   width: max-content;
 `;
 
@@ -35,7 +36,6 @@ export const FormInputs = styled.div`
 
 export const Input = styled.input`
   border-radius: 5px;
-  width: 100%;
 `;
 
 export const AddBtn = styled.button`

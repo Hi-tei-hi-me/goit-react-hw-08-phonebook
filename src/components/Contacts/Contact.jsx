@@ -6,12 +6,12 @@ import { MdPersonRemove, MdDeleteForever } from 'react-icons/md';
 import { BsPatchExclamation } from 'react-icons/bs';
 import { Item, ContactInfo, DeleteBtn } from './Contacts.styled';
 import { deleteContact } from 'redux/contacts/operations';
-import { setIsLoading } from 'redux/contacts/selectors';
+import { selectAllContacts } from 'redux/contacts/selectors';
 
 export const Contact = ({ id, name, number }) => {
   const [idToDelete, setIdToDelete] = useState('');
   const dispatch = useDispatch();
-  const isLoading = useSelector(setIsLoading);
+  const isLoading = useSelector(selectAllContacts);
 
   const handleDelete = async () => {
     setIdToDelete(id);
