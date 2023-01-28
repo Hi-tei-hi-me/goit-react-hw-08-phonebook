@@ -38,3 +38,16 @@ export const Error = styled.div`
   background-color: rgba(211, 211, 211, 0.9);
   color: #3d3d3d;
 `;
+
+export const WrongPage = styled.div`
+  margin: 15px auto;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  border: 1.5px solid #474747;
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211, 0.9);
+  color: #3d3d3d;
+`;

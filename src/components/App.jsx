@@ -1,11 +1,13 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { TbError404 } from 'react-icons/tb';
 import { Layout } from './Layout/Layout';
 import { RestrictedRoute } from 'utils/routes/RestrictedRoute';
 import { PrivateRoute } from 'utils/routes/PrivateRoute';
 import { refreshUser } from 'redux/authorization/operations';
 import { useAuth } from 'utils/hooks';
+import { WrongPage } from './reusables/Notifications/Notifications.styled';
 import { Loader } from 'components/reusables/Loader/Loader';
 
 const HomePage = lazy(() => import('../pages/Home'));
@@ -40,6 +42,17 @@ export const App = () => {
           element={<PrivateRoute redirectTo="/login" component={ContactsBook} />}
         />
       </Route>
+      <Route
+        path="*"
+        element={
+          <WrongPage>
+            <TbError404 size={60} color="#b24a4a" />
+            You are looking for unexisting page!
+            <br />
+            That's cool, but please try anything else.
+          </WrongPage>
+        }
+      />
     </Routes>
   );
 };
