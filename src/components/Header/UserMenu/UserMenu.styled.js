@@ -4,9 +4,11 @@ export const LogoutMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  @media (max-width: 767px) {
+  gap: 10px;
+  @media (max-width: 470px) {
     flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
   }
 `;
 

@@ -5,6 +5,11 @@ export const SectionWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  @media (max-width: 470px) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+  }
 `;
 
 export const Link = styled(NavLink)`
@@ -20,6 +25,7 @@ export const Link = styled(NavLink)`
     font-weight: bold;
   }
   &.active {
+    font-weight: bold;
     text-decoration: underline;
   }
 `;

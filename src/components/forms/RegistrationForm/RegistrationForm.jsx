@@ -36,7 +36,7 @@ export const RegistrationForm = () => {
       })
       .catch(() =>
         toast(`Something's wrong. Please try again later.`, {
-          icon: <MdOutlinePersonAddDisabled size={25} color="#5d3d79" />,
+          icon: <MdOutlinePersonAddDisabled size={25} color="#aa8c3f" />,
         })
       );
     form.reset();
@@ -47,16 +47,16 @@ export const RegistrationForm = () => {
   ) : (
     <Form onSubmit={handleSubmit} autoComplete="off">
       <Label>
-        <MdPersonOutline size={28} color="#4e4e4e" />
         <Input type="text" name="name" placeholder="username" required />
+        <MdPersonOutline size={28} color="#364a4a" />
       </Label>
       <Label>
-        <MdAlternateEmail size={28} color="#4e4e4e" />
         <Input type="email" name="email" placeholder="email@mail.com" required />
+        <MdAlternateEmail size={28} color="#364a4a" />
       </Label>
       <Label>
-        <MdOutlinePassword size={28} color="#4e4e4e" />
         <Input type="password" name="password" placeholder="password" required />
+        <MdOutlinePassword size={28} color="#364a4a" />
       </Label>
       <RegistrationBtn type="submit">
         Register

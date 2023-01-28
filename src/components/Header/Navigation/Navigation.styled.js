@@ -4,10 +4,6 @@ import { NavLink } from 'react-router-dom';
 export const Nav = styled.nav`
   display: flex;
   gap: 20px;
-  @media (max-width: 767px) {
-    flex-direction: column;
-    gap: 5px;
-  }
 `;
 
 export const Link = styled(NavLink)`
@@ -24,6 +20,7 @@ export const Link = styled(NavLink)`
     font-weight: bold;
   }
   &.active {
+    font-weight: bold;
     text-decoration: underline;
   }
 `;

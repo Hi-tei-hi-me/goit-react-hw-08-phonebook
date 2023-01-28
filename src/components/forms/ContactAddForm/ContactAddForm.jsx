@@ -9,15 +9,7 @@ import {
   MdAddToHomeScreen,
 } from 'react-icons/md';
 import { BsPatchExclamation } from 'react-icons/bs';
-import {
-  FormContainer,
-  FormTable,
-  FormLabels,
-  Label,
-  FormInputs,
-  Input,
-  AddBtn,
-} from './ContactAddForm.styled';
+import { Form, FormField, Label, Input, AddBtn } from './ContactAddForm.styled';
 import { addContact } from 'redux/contacts/operations';
 import { selectAllContacts } from 'redux/contacts/selectors';
 
@@ -60,41 +52,39 @@ export const ContactForm = () => {
     if (name === 'number') setNumber(value);
   };
   return (
-    <FormContainer autoComplete="off" onSubmit={handleSubmit}>
-      <FormTable>
-        <FormLabels>
-          <Label htmlFor="name">
-            <MdPerson size={28} color="#4e4e4e" />
-          </Label>
-          <Label htmlFor="number">
-            <MdPhone size={28} color="#4e4e4e" />
-          </Label>
-        </FormLabels>
-        <FormInputs>
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="name"
-            value={name}
-            onChange={handleChange}
-            required
-          />
-          <Input
-            type="tel"
-            name="number"
-            placeholder="phone №"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            value={number}
-            onChange={handleChange}
-            required
-          />
-        </FormInputs>
-      </FormTable>
+    <Form autoComplete="off" onSubmit={handleSubmit}>
+      <FormField>
+        <Label htmlFor="name">
+          <MdPerson size={28} color="#4e4e4e" />
+        </Label>
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="name"
+          value={name}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="number">
+          <MdPhone size={28} color="#4e4e4e" />
+        </Label>
+        <Input
+          type="tel"
+          name="number"
+          placeholder="phone №"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          value={number}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
       <AddBtn type="submit">
         Add contact <MdAddToHomeScreen size={20} color="rgb(77, 104, 104)" />
       </AddBtn>
-    </FormContainer>
+    </Form>
   );
 };

@@ -2,7 +2,7 @@ import { unwrapResult } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import {
-  MdOutlineDoneAll,
+  MdNoAccounts,
   MdOutlineRemoveDone,
   MdPersonOutline,
   MdOutlineLogout,
@@ -19,7 +19,7 @@ export const UserMenu = () => {
       .then(unwrapResult)
       .then(response => {
         toast(`You successfully leaved your profile!`, {
-          icon: <MdOutlineDoneAll size={25} color="#327047" />,
+          icon: <MdNoAccounts size={25} color="#327047" />,
         });
       })
       .catch(() =>
@@ -32,10 +32,10 @@ export const UserMenu = () => {
     <LogoutMenu>
       <User>
         <MdPersonOutline size={25} color="#aa8c3f" />
-        User:<b>{user.name}</b>
+        <b>{user.name}</b>
       </User>
       <LogoutBtn type="button" onClick={handleLogOut}>
-        Logout
+        Log Out
         <MdOutlineLogout size={20} color="#976363" />
       </LogoutBtn>
     </LogoutMenu>

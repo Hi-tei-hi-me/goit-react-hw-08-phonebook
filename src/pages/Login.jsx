@@ -1,9 +1,10 @@
 import { Helmet } from 'react-helmet-async';
+import { LoginPageWrap } from './Login.styled';
 import { LoginForm } from 'components/forms/LogInForm/LogInForm';
 
 export default function Login() {
   return (
-    <>
+    <LoginPageWrap>
       <Helmet>
         <title>Login</title>
       </Helmet>
@@ -13,6 +14,6 @@ export default function Login() {
         for registered Users
       </h2>
       <LoginForm />
-    </>
+    </LoginPageWrap>
   );
 }

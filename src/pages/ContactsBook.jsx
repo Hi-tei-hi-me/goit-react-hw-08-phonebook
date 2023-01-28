@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
-import { MdBook, MdSearchOff, MdOutlineErrorOutline } from 'react-icons/md';
+import { MdOutlineBook, MdSearchOff, MdOutlineErrorOutline } from 'react-icons/md';
+import { ContactsBookWrap } from './ContactsBook.styled';
 import { ContactForm } from 'components/forms/ContactAddForm/ContactAddForm';
 import { ContactList } from 'components/Contacts/ListOfContacts';
 import { getFilteredList } from 'redux/selectors';
@@ -29,7 +30,7 @@ export default function Contacts() {
   const error = useSelector(selectError);
 
   return (
-    <>
+    <ContactsBookWrap>
       <Helmet>
         <title>Your Book</title>
       </Helmet>
@@ -43,7 +44,7 @@ export default function Contacts() {
           {contactIsLoading && !error && <Loader />}
           {!contactIsLoading && !error && contacts.length === 0 && (
             <NothingAdded>
-              <MdBook size={25} />
+              <MdOutlineBook size={25} />
               This Book is empty. Yet.
             </NothingAdded>
           )}
@@ -63,6 +64,6 @@ export default function Contacts() {
           )}
         </>
       )}
-    </>
+    </ContactsBookWrap>
   );
 }
