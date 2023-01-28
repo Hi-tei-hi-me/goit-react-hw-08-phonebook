@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/266.cd962754.chunk.js","mappings":"uMAAe,SAASA,IACtB,OACE,iCACE,iEACA,iEAGL,C","sources":["pages/Home.js"],"sourcesContent":["export default function Home() {\n  return (\n    <>\n      <h1>Welcome to your personal Phonebook!</h1>\n      <h2>Please login or register to use it</h2>\n    </>\n  );\n}\n"],"names":["Home"],"sourceRoot":""}
